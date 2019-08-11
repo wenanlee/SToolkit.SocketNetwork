@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SToolkit.SocketNetwork.WinFormsDemo.Properties
+namespace EFramework.Network.WinFormsDemo.Properties
 {
 
 

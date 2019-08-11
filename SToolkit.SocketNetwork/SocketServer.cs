@@ -6,7 +6,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 
-namespace SToolkit.SocketNetwork
+namespace EFramework.Network
 {
     /// <summary>
     /// 
@@ -40,7 +40,7 @@ namespace SToolkit.SocketNetwork
         /// <summary>
         /// Server type.
         /// </summary>
-        public NetworkType ServerType { get; set; }
+        public ESocketType ServerType { get; set; }
         /// <summary>
         /// Only for UDP. Require to use SocketClient class for this.
         /// </summary>
@@ -87,7 +87,7 @@ namespace SToolkit.SocketNetwork
         /// <param name="type">Server type (TCP, UDP)</param>
         /// <param name="address">Server listening ip</param>
         /// <param name="port">Server listening port</param>
-        public SocketServer(NetworkType type, IPAddress address, int port)
+        public SocketServer(ESocketType type, IPAddress address, int port)
         {
             Uid = Guid.NewGuid().ToString();
             ServerType = type;
@@ -108,7 +108,7 @@ namespace SToolkit.SocketNetwork
         {
             try
             {
-                if (ServerType == NetworkType.Tcp)
+                if (ServerType == ESocketType.Tcp)
                 {
                     Listener = new Socket(IPAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
                     DisconnectTimer.Elapsed += (s, e) =>
@@ -127,7 +127,7 @@ namespace SToolkit.SocketNetwork
                         }
                     };
                 }
-                else if (ServerType == NetworkType.Udp)
+                else if (ServerType == ESocketType.Udp)
                 {
                     if (UDPClientManage)
                     {
@@ -167,7 +167,7 @@ namespace SToolkit.SocketNetwork
                 Listener.ReceiveBufferSize = ClientConnection.BufferSize;
                 Listener.SendBufferSize = ClientConnection.BufferSize;
                 Listener.Bind(new IPEndPoint(IPAddress, Port));
-                if (ServerType == NetworkType.Tcp)
+                if (ServerType == ESocketType.Tcp)
                 {
                     Listener.Listen(Backlog);
                 }
@@ -208,11 +208,11 @@ namespace SToolkit.SocketNetwork
             try
             {
                 OnStart?.Invoke(this, new EventArgs());
-                if (ServerType == NetworkType.Tcp)
+                if (ServerType == ESocketType.Tcp)
                 {
                     Listener.BeginAccept(new AsyncCallback(AcceptCallback), Listener);
                 }
-                if (ServerType == NetworkType.Udp)
+                if (ServerType == ESocketType.Udp)
                 {
                     if (UDPClientManage)
                     {

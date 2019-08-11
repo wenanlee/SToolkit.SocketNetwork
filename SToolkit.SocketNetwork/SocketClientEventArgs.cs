@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SToolkit.SocketNetwork
+namespace EFramework.Network
 {
     public class SocketClientEventArgs : EventArgs
     {

@@ -1,4 +1,4 @@
-﻿namespace SToolkit.SocketNetwork.WinFormsDemo
+﻿namespace EFramework.Network.WinFormsDemo
 {
     partial class Form1
     {

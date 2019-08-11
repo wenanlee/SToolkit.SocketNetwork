@@ -3,7 +3,7 @@ using System.Net;
 using System.Text;
 using System.Windows.Forms;
 
-namespace SToolkit.SocketNetwork.WinFormsDemo
+namespace EFramework.Network.WinFormsDemo
 {
     public partial class Form1 : Form
     {
@@ -20,7 +20,7 @@ namespace SToolkit.SocketNetwork.WinFormsDemo
 
         private void TcpStart_Click(object sender, EventArgs e)
         {
-            TcpServer = new SocketServer(NetworkType.Tcp, IPAddress.Parse(TcpServerIP.Text), int.Parse(TcpServerPort.Text));
+            TcpServer = new SocketServer(ESocketType.Tcp, IPAddress.Parse(TcpServerIP.Text), int.Parse(TcpServerPort.Text));
             TcpServer.OnStart += (s, ev) =>
             {
                 TcpServerLog.Text += $"Server started\n";
@@ -52,7 +52,7 @@ namespace SToolkit.SocketNetwork.WinFormsDemo
 
         private void TcpConnect_Click(object sender, EventArgs e)
         {
-            TcpClient = new SocketClient(NetworkType.Tcp);
+            TcpClient = new SocketClient(ESocketType.Tcp);
             TcpClient.OnConnected += (s, ev) =>
             {
                 TcpClientLog.Text += $"Connected to {TcpClient.RemoteIP}:{TcpClient.RemotePort}\n";
@@ -80,7 +80,7 @@ namespace SToolkit.SocketNetwork.WinFormsDemo
 
         private void UdpStart_Click(object sender, EventArgs e)
         {
-            UdpServer = new SocketServer(NetworkType.Udp, IPAddress.Parse(UdpServerIP.Text), int.Parse(UdpServerPort.Text));
+            UdpServer = new SocketServer(ESocketType.Udp, IPAddress.Parse(UdpServerIP.Text), int.Parse(UdpServerPort.Text));
             UdpServer.OnStart += (s, ev) =>
             {
                 UdpServerLog.Text += $"Server started\n";
@@ -112,7 +112,7 @@ namespace SToolkit.SocketNetwork.WinFormsDemo
 
         private void UdpConnect_Click(object sender, EventArgs e)
         {
-            UdpClient = new SocketClient(NetworkType.Udp);
+            UdpClient = new SocketClient(ESocketType.Udp);
             UdpClient.OnConnected += (s, ev) =>
             {
                 UdpClientLog.Text += $"Connected to {UdpClient.RemoteIP}:{UdpClient.RemotePort}\n";

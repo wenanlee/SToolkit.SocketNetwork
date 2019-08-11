@@ -2,7 +2,7 @@
 using System.Net;
 using System.Net.Sockets;
 
-namespace SToolkit.SocketNetwork
+namespace EFramework.Network
 {
     public delegate void SendBytesTo(byte[] data, EndPoint point);
 

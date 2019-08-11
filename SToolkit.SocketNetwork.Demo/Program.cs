@@ -5,7 +5,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 
-namespace SToolkit.SocketNetwork.Demo
+namespace EFramework.Network.Demo
 {
     class Program
     {
@@ -31,7 +31,7 @@ namespace SToolkit.SocketNetwork.Demo
             //TcpClient.Disconnect();
             //TcpServer.Stop();
 
-            UdpServer = new SocketServer(NetworkType.Udp, IPAddress.Loopback, 5401);
+            UdpServer = new SocketServer(ESocketType.Udp, IPAddress.Loopback, 5401);
             UdpServer.OnConnected += UdpServer_OnConnected;
             UdpServer.OnDisconnected += UdpServer_OnDisconnected;
             UdpServer.OnError += UdpServer_OnError;
@@ -40,7 +40,7 @@ namespace SToolkit.SocketNetwork.Demo
             UdpServer.OnStop += UdpServer_OnStop;
             Console.WriteLine("Starting udp server");
             UdpServer.Start();
-            SocketClient UdpClient = new SocketClient(NetworkType.Udp);
+            SocketClient UdpClient = new SocketClient(ESocketType.Udp);
             UdpClient.OnConnected += TcpClient_OnConnected;
             UdpClient.OnDisconnected += TcpClient_OnDisconnect;
             UdpClient.OnReceived += TcpClient_OnReceived;

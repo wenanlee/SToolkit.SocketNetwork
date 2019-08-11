@@ -3,14 +3,14 @@ using System.IO;
 using System.Net;
 using System.Net.Sockets;
 
-namespace SToolkit.SocketNetwork
+namespace EFramework.Network
 {
     public class SocketClient : ClientConnection, IDisposable
     {
         /// <summary>
         /// Client type
         /// </summary>
-        public NetworkType ClientType { get; set; }
+        public ESocketType ClientType { get; set; }
         /// <summary>
         /// Actions ms interval for reduce CPU usage.
         /// </summary>
@@ -44,7 +44,7 @@ namespace SToolkit.SocketNetwork
         /// SocketClient class constructor.
         /// </summary>
         /// <param name="type">Client type</param>
-        public SocketClient(NetworkType type)
+        public SocketClient(ESocketType type)
         {
             ClientType = type;
             UDPTimer = new System.Timers.Timer(UDPDataInterval);
@@ -83,12 +83,12 @@ namespace SToolkit.SocketNetwork
         {
             try
             {
-                if (ClientType == NetworkType.Tcp)
+                if (ClientType == ESocketType.Tcp)
                 {
                     Socket = new Socket(point.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
                     Socket.BeginConnect(point, new AsyncCallback(ConnectCallback), null);
                 }
-                else if (ClientType == NetworkType.Udp)
+                else if (ClientType == ESocketType.Udp)
                 {
                     Socket = new Socket(point.AddressFamily, SocketType.Dgram, ProtocolType.Udp);
                     Socket.Connect(point);

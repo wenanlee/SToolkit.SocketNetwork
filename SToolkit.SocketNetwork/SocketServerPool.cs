@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 
-namespace SToolkit.SocketNetwork
+namespace EFramework.Network
 {
     public class SocketServerPool : IDisposable
     {
@@ -35,7 +35,7 @@ namespace SToolkit.SocketNetwork
             Servers.Clear();
         }
 
-        public SocketServer Add(NetworkType type, IPAddress ip, int port)
+        public SocketServer Add(ESocketType type, IPAddress ip, int port)
         {
             SocketServer server = new SocketServer(type, ip, port);
             Servers.Add(server);

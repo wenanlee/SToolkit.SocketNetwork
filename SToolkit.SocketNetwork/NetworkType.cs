@@ -1,9 +1,9 @@
 ﻿using System;
 
-namespace SToolkit.SocketNetwork
+namespace EFramework.Network
 {
     [Flags]
-    public enum NetworkType
+    public enum ESocketType
     {
         Tcp, Udp
     }
